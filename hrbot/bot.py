@@ -126,7 +126,7 @@ async def callbacks_num(call: types.CallbackQuery):
         await call.message.answer(work.name)
         await call.message.answer(work.description)
         if work.interview != "":
-            await call.message.answer('Вы можете пройти первичное собеседование по ссылке: /n'+work.interview)
+            await call.message.answer('Вы можете пройти первичное собеседование по ссылке: \n'+work.interview)
     await call.answer()
     #
     # elif btn_number == "4":
