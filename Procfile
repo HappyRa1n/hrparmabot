@@ -1,0 +1,1 @@
+web: gunicorn djbot.wsgi --log-file -
