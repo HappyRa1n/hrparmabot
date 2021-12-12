@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tc4-n$%i&xqufx#@cu=p9_qhs1!p&vh(5%u(26@l4@le9#n^5l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://happyrain.pythonanywhere.com/']
 
 
 # Application definition
