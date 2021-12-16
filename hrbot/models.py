@@ -4,9 +4,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class City(models.Model):
     name = models.CharField(max_length=255, verbose_name='Name', db_index=True)
-    address = models.CharField(max_length=255, verbose_name='Adress')
-    latitude = models.FloatField(verbose_name="Latitude", validators=[MaxValueValidator(90), MinValueValidator(-90)])
-    longitude = models.FloatField(verbose_name="Longitude", validators=[MaxValueValidator(180), MinValueValidator(-180)])
+    address = models.CharField(max_length=255, verbose_name='Adress', null=True, blank=True)
+    latitude = models.FloatField(verbose_name="Latitude", validators=[MaxValueValidator(90), MinValueValidator(-90)], null = True, blank=True)
+    longitude = models.FloatField(verbose_name="Longitude", validators=[MaxValueValidator(180), MinValueValidator(-180)], null = True, blank=True)
 
     def __str__(self):
         return self.name

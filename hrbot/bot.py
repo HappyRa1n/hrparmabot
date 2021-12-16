@@ -102,7 +102,13 @@ async def callbacks_num(call: types.CallbackQuery):
     elif 'townmap' in btn_number:
         index = int(btn_number.replace('townmap',''))
         town = await loop.run_in_executor(None, GetTown, index)
-        await call.message.answer_venue(
+
+        if(town.address == None):
+            await call.message.answer(
+                "Адрес не указан"
+            )
+        else:
+            await call.message.answer_venue(
                town.latitude,
                town.longitude,
                "Адрес и геометка офиса компании:",
@@ -125,55 +131,10 @@ async def callbacks_num(call: types.CallbackQuery):
         work = await loop.run_in_executor(None, GetWork, index)
         await call.message.answer(work.name)
         await call.message.answer(work.description)
-        if work.interview != "":
+        if work.interview != None:
             await call.message.answer('Вы можете пройти первичное собеседование по ссылке: \n'+work.interview)
     await call.answer()
-    #
-    # elif btn_number == "4":
-    #     await call.message.answer(
-    #         "Отправьте своё резюме в этот чат, мы рассмотрим Вашу заявку и свяжемся с вами"
-    #     )
-    # elif btn_number == "5":
-    #     await call.message.answer("Администратор баз данных")
-    # elif btn_number == "6":
-    #     await call.message.answer("Бизнес-архитектор")
-    # elif btn_number == "7":
-    #     await call.message.answer("Руководитель группы разработки")
-    # elif btn_number == "8":
-    #     await call.message.answer("Специалист по оценке персонала")
-    # elif btn_number == "9":
-    #     await call.message.answer("Системный архитектор")
-    # elif btn_number == "10":
-    #     await call.message.answer("DevOps-инженер")
-    # elif btn_number == "11":
-    #     await call.message.answer("Руководитель проектов")
-    # elif btn_number == "12":
-    #     await call.message.answer("Pre-Sale менеджер")
-    # elif btn_number == "13":
-    #     await call.message.answer_venue(
-    #         58.00513762428379,
-    #         56.200238735786556,
-    #         "Адрес и геометка офиса компании:",
-    #         "ул. Ленина, 77a"
-    #     )
-    # elif btn_number == "14":
-    #     await call.message.answer_venue(
-    #         45.03904199690753,
-    #         38.98624678752819,
-    #         "Адрес и геометка офиса компании:",
-    #         "ул. Северная, 327"
-    #     )
-    # elif btn_number == "15":
-    #     await call.message.answer_venue(
-    #         55.713153978710565,
-    #         37.62025208405767,
-    #         "Адрес и геометка офиса компании:",
-    #         "ул. Мытная, 66"
-    #     )
-    # elif btn_number == "16":
-    #     await call.message.answer(
-    #         "Извините, но офисы нашей компании находятся только в указанных выше городах"
-    #     )
+
 
 
 
